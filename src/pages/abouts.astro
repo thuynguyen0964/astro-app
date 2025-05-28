@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css"
+import BaseLayout from "../layouts/BaseLayout.astro"
+
 const pageTitle="About page dynamic";
 const identity = {
   firstName: "Sarah",
@@ -16,14 +18,7 @@ const goal = 3;
 const skillColor = "red"
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>{pageTitle}</title>
-    <style define:vars={{skillColor}}>
+<style define:vars={{skillColor}}>
   h1 {
     color: purple;
     font-size: 4rem;
@@ -34,12 +29,8 @@ const skillColor = "red"
     font-weight: bold;
   }
 </style>
-  </head>
-  <body>
-  <a href="/">Home</a>
-<a href="/abouts/">About</a>
-<a href="/posts">Blogs</a>
-  <h1 class="skill">{pageTitle}</h1>
+
+<BaseLayout pageTitle={pageTitle}>
   <h2>... and my new Astro site!</h2>
 
   <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
@@ -62,5 +53,4 @@ const skillColor = "red"
 {finished && <p>I finished this tutorial!</p>}
 
 {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-</body>
-</html>
+</BaseLayout>
